@@ -451,6 +451,9 @@ canvas {
 .video-animated-border > div {
   border-radius: 10px;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes borderFlow {

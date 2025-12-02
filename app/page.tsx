@@ -589,10 +589,12 @@ export default function Home() {
               className="video-animated-border"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
@@ -622,10 +624,12 @@ export default function Home() {
               className="video-animated-border"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
@@ -655,10 +659,12 @@ export default function Home() {
               className="video-animated-border col-span-2 md:col-span-1"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
@@ -769,10 +775,12 @@ export default function Home() {
               className="video-animated-border"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
@@ -802,10 +810,12 @@ export default function Home() {
               className="video-animated-border"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
@@ -835,10 +845,12 @@ export default function Home() {
               className="video-animated-border col-span-2 md:col-span-1"
             >
               <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
                 minHeight: '200px',
                 height: '100%',
+                width: '100%',
+                borderRadius: '10px',
               }}>
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
