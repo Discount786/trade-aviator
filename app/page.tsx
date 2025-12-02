@@ -568,9 +568,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#FFFFFF' }}>
-              Why Most Traders FAIL
-            </h2>
+            <div className="section-title-banner inline-block mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold" style={{ color: '#FFFFFF', margin: 0 }}>
+                Why Most Traders FAIL
+              </h2>
+            </div>
             <p className="text-lg md:text-xl" style={{ color: '#A78BFA' }}>
               Top 3 reasons most fail - Here's Why...
             </p>
@@ -584,31 +586,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
-              style={{
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  TIME WASTED
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Hours glued to charts — missing life & still missing the best moves.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                TIME WASTED
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Hours glued to charts — missing life & still missing the best moves.
-              </p>
             </motion.div>
 
             {/* Card 2 */}
@@ -617,31 +619,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
-              style={{
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  FOMO = LOSS
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Overtrading & revenge trading — chasing setups to claw back losses until accounts blow.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                FOMO = LOSS
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Overtrading & revenge trading — chasing setups to claw back losses until accounts blow.
-              </p>
             </motion.div>
 
             {/* Card 3 */}
@@ -650,31 +652,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center col-span-2 md:col-span-1"
-              style={{
+              className="video-animated-border col-span-2 md:col-span-1"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  LACKING CONSISTENCY
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Inconsistent results — no steady edge, just random wins and losses.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                LACKING CONSISTENCY
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Inconsistent results — no steady edge, just random wins and losses.
-              </p>
             </motion.div>
           </div>
 
@@ -743,9 +745,11 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#FFFFFF' }}>
-              Why Trade Aviator Works
-            </h2>
+            <div className="section-title-banner inline-block mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold" style={{ color: '#FFFFFF', margin: 0 }}>
+                Why Trade Aviator Works
+              </h2>
+            </div>
             <div className="flex items-center justify-center gap-2">
               <div className="w-2 h-2 rounded-full" style={{ background: '#A78BFA' }}></div>
               <p className="text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
@@ -762,31 +766,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
-              style={{
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  HUMAN EMOTION - REMOVED
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Emotion-free execution - rules-based quant logic removes fear, greed & hesitation.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                HUMAN EMOTION - REMOVED
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Emotion-free execution - rules-based quant logic removes fear, greed & hesitation.
-              </p>
             </motion.div>
 
             {/* Card 2 */}
@@ -795,31 +799,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
-              style={{
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  FREEDOM
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Freedom from the charts - trade without being chained to charts all day.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                FREEDOM
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Freedom from the charts - trade without being chained to charts all day.
-              </p>
             </motion.div>
 
             {/* Card 3 */}
@@ -828,31 +832,31 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center col-span-2 md:col-span-1"
-              style={{
+              className="video-animated-border col-span-2 md:col-span-1"
+            >
+              <div className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center" style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
-              <div 
-                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
-                style={{
-                  background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
-                }}
-              >
-                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
-                  <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              }}>
+                <div 
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
+                  style={{
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
+                  }}
+                >
+                  <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
+                  DATA DRIVEN PERFORMANCE
+                </h3>
+                <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
+                  Reliable performance - a steady edge designed to deliver repeatable results.
+                </p>
               </div>
-              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
-                DATA DRIVEN PERFORMANCE
-              </h3>
-              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
-                Reliable performance - a steady edge designed to deliver repeatable results.
-              </p>
             </motion.div>
           </div>
 

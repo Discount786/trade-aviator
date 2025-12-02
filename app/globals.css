@@ -176,6 +176,49 @@ img {
   transform: translateZ(0);
 }
 
+/* Animated Dark Blue Banner for Section Titles */
+.section-title-banner {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.8) 0%,
+    rgba(37, 99, 235, 0.9) 25%,
+    rgba(59, 130, 246, 0.8) 50%,
+    rgba(37, 99, 235, 0.9) 75%,
+    rgba(30, 58, 138, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: bannerFlow 4s ease-in-out infinite;
+  box-shadow: 
+    0 4px 20px rgba(30, 58, 138, 0.4),
+    0 0 40px rgba(37, 99, 235, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+@keyframes bannerFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title-banner {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+  }
+}
+
 /* Optimize countdown timer */
 [class*="countdown"] {
   contain: layout style;
