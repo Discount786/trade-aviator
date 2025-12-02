@@ -13,7 +13,7 @@ export default function DigitalGlobe3D() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    if (!canvasRef.current || typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !canvasRef.current) return;
 
     try {
       const canvas = canvasRef.current;
@@ -314,23 +314,34 @@ export default function DigitalGlobe3D() {
     };
     } catch (error) {
       console.error("Error initializing 3D Globe:", error);
+      // Return empty cleanup if initialization failed
+      return () => {};
     }
   }, [isVisible]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed right-0 digital-globe-position pointer-events-none opacity-30"
+    <div 
+      className="fixed right-0 digital-globe-position pointer-events-none"
       style={{
+        zIndex: 5,
         width: "650px",
         height: "650px",
         maxWidth: "90vw",
         maxHeight: "90vh",
-        zIndex: 0, // Behind navigation (z-50) but visible
-        transform: "translateX(5%)",
-        willChange: "transform",
       }}
-    />
+    >
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+          opacity: 0.4,
+          transform: "translateX(5%)",
+          willChange: "transform",
+        }}
+      />
+    </div>
   );
 }
 
