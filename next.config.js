@@ -12,10 +12,6 @@ const nextConfig = {
   },
   // Optimize fonts
   optimizeFonts: true,
-  // Experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 module.exports = nextConfig;
