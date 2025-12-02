@@ -232,15 +232,17 @@ canvas {
 /* Digital Globe Positioning - aligned with "Advanced Trading Automation" title */
 .digital-globe-position {
   /* Mobile: Banner (~50px) + Nav (~56px) + small spacing = ~110px */
-  top: calc(50px + 56px + 4px);
-  right: 0;
+  top: calc(50px + 56px + 4px) !important;
+  right: 0 !important;
   position: fixed !important; /* Always stay fixed in top-right */
+  z-index: 40 !important; /* Above content but below navigation */
+  pointer-events: none !important; /* Don't block interactions */
 }
 
 @media (min-width: 768px) {
   .digital-globe-position {
     /* Desktop: Banner (~60px) + Nav (~80px) + small spacing = ~144px */
-    top: calc(60px + 80px + 4px);
+    top: calc(60px + 80px + 4px) !important;
   }
 }
 

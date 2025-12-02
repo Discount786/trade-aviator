@@ -323,11 +323,13 @@ export default function DigitalGlobe3D() {
     <div 
       className="digital-globe-position pointer-events-none"
       style={{
-        zIndex: 5,
+        zIndex: 40, // Above most content but below navigation (z-50)
         width: "650px",
         height: "650px",
         maxWidth: "90vw",
         maxHeight: "90vh",
+        position: "fixed", // Ensure fixed positioning
+        right: 0, // Always at right edge
       }}
     >
       <canvas
@@ -336,7 +338,7 @@ export default function DigitalGlobe3D() {
           width: "100%",
           height: "100%",
           display: "block",
-          opacity: 0.4,
+          opacity: 0.5, // Increased visibility
           transform: "translateX(5%)",
           willChange: "transform",
         }}
