@@ -428,6 +428,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             className="max-w-4xl mx-auto px-2 md:px-0 mt-[2px] md:mt-8"
+            style={{ position: 'relative', zIndex: 10 }}
           >
             <div className="video-animated-border">
               <div className="relative rounded-xl overflow-hidden" style={{

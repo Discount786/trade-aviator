@@ -235,7 +235,7 @@ canvas {
   top: calc(50px + 56px + 4px) !important;
   right: 0 !important;
   position: fixed !important; /* Always stay fixed in top-right */
-  z-index: 40 !important; /* Above content but below navigation */
+  z-index: 1 !important; /* Below video and content, above background */
   pointer-events: none !important; /* Don't block interactions */
 }
 

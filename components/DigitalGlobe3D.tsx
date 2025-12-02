@@ -323,7 +323,7 @@ export default function DigitalGlobe3D() {
     <div 
       className="digital-globe-position pointer-events-none"
       style={{
-        zIndex: 40, // Above most content but below navigation (z-50)
+        zIndex: 1, // Below video and content, above background
         width: "650px",
         height: "650px",
         maxWidth: "90vw",
