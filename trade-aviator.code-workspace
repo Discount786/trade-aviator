@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Trade Aviator - Animated Globe Project"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/node_modules": true,
+			"**/.next": true
+		}
+	},
+	"extensions": {
+		"recommendations": []
+	}
+}
+

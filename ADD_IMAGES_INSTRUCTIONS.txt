@@ -1,0 +1,42 @@
+========================================
+HOW TO ADD YOUR IMAGES
+========================================
+
+Your images (5, 6, 7, 8, 9, 10) need to be in the public folder.
+
+STEP 1: Copy your images
+-------------------------
+1. Open File Explorer
+2. Go to: C:\Users\44777\Downloads
+3. Find your 6 images (numbered 5, 6, 7, 8, 9, 10)
+4. Select all 6 images and COPY them (Ctrl+C)
+
+STEP 2: Paste into public folder
+---------------------------------
+1. Go to: C:\Users\44777\new-project\public
+2. PASTE the images (Ctrl+V)
+
+STEP 3: Rename the images
+--------------------------
+Rename them to these exact names:
+- Image 5 → trading1.jpg (or .png if that's the format)
+- Image 6 → trading2.jpg (or .png)
+- Image 7 → trading3.jpg (or .png)
+- Image 8 → cjpghat1. (or .png)
+- Image 9 → chat2.jpg (or .png)
+- Image 10 → chat3.jpg (or .png)
+
+IMPORTANT:
+- Keep the same file extension (.jpg, .png, etc.) they already have
+- Just change the name part (e.g., "5.jpg" becomes "trading1.jpg")
+
+STEP 4: Refresh your browser
+-----------------------------
+After adding the images, refresh the page (F5) and they should appear!
+
+========================================
+
+
+
+
+

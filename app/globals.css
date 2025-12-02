@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+/* Optimize video rendering */
+video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* GPU acceleration for animations - only when animating */
+[data-framer-component]:is([style*="opacity"], [style*="transform"]) {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Optimize backdrop filters */
+[style*="backdrop-filter"] {
+  transform: translateZ(0);
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+/* Optimize motion components - only when needed */
+[data-framer-name]:is([style*="opacity"], [style*="transform"]) {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize images */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  content-visibility: auto;
+}
+
+/* Reduce repaints on animated elements */
+.animated-blue-border,
+.video-animated-border {
+  contain: layout style paint;
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+/* Optimize countdown timer */
+[class*="countdown"] {
+  contain: layout style;
+}
+
+/* Performance: Reduce layout shifts */
+section, div[class*="motion"] {
+  contain: layout style;
+}
+
+/* Optimize canvas elements */
+canvas {
+  contain: strict;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.gradient-text {
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.digital-text {
+  animation: digitalGlow 2s ease-in-out infinite alternate;
+  position: relative;
+  will-change: text-shadow;
+  transform: translateZ(0);
+}
+
+.digital-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  z-index: -1;
+  color: rgba(58, 139, 255, 0.5);
+  animation: digitalShift 0.1s infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .digital-text,
+  .digital-text::before,
+  .animated-blue-border,
+  .video-animated-border,
+  .gradient-text {
+    animation: none !important;
+  }
+  
+  [data-framer-component] {
+    transition: none !important;
+  }
+}
+
+@keyframes digitalGlow {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(58, 139, 255, 0.8),
+      0 0 20px rgba(86, 224, 255, 0.6),
+      0 0 30px rgba(58, 139, 255, 0.4),
+      2px 2px 0px rgba(58, 139, 255, 0.3),
+      -1px -1px 0px rgba(86, 224, 255, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(58, 139, 255, 1),
+      0 0 25px rgba(86, 224, 255, 0.8),
+      0 0 35px rgba(58, 139, 255, 0.6),
+      3px 3px 0px rgba(58, 139, 255, 0.4),
+      -2px -2px 0px rgba(86, 224, 255, 0.4);
+  }
+}
+
+@keyframes digitalShift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  75% {
+    transform: translate(1px, 1px);
+  }
+}
+
+.shiny-border {
+  border: 2px solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(58, 139, 255, 0.4),
+    rgba(86, 224, 255, 0.6),
+    rgba(167, 174, 255, 0.6),
+    rgba(86, 224, 255, 0.6),
+    rgba(58, 139, 255, 0.4)
+  ) 1;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.animated-blue-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(58, 139, 255, 0.8),
+    rgba(86, 224, 255, 1),
+    rgba(167, 174, 255, 1),
+    rgba(86, 224, 255, 1),
+    rgba(58, 139, 255, 0.8)
+  );
+  background-size: 200% 100%;
+  animation: borderFlow 3s linear infinite;
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  height: fit-content;
+}
+
+.animated-blue-border img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.video-animated-border {
+  position: relative;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(58, 139, 255, 0.6),
+    rgba(86, 224, 255, 0.9),
+    rgba(167, 174, 255, 0.9),
+    rgba(86, 224, 255, 0.9),
+    rgba(58, 139, 255, 0.6)
+  );
+  background-size: 200% 100%;
+  animation: borderFlow 3s linear infinite;
+}
+
+.video-animated-border > div {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
