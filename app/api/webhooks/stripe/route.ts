@@ -5,6 +5,11 @@ import type { Resend } from 'resend';
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
+
+// Prevent static generation
+export const dynamicParams = true;
 
 export async function POST(request: NextRequest) {
   console.log('🔔 Webhook endpoint called');
