@@ -1,21 +1,24 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// Force dynamic rendering - useSearchParams requires this
+// Force dynamic rendering
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
-function PaymentSuccessContent() {
-  const searchParams = useSearchParams();
+export default function PaymentSuccessPage() {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const sessionIdParam = searchParams.get('session_id');
+    // Use window.location instead of useSearchParams to avoid prerender issues
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const sessionIdParam = params.get('session_id');
     if (sessionIdParam) {
       setSessionId(sessionIdParam);
       setIsLoading(false);
@@ -50,7 +53,8 @@ function PaymentSuccessContent() {
       // No session ID, redirect to home
       router.push('/');
     }
-  }, [searchParams, router]);
+    }
+  }, [router]);
 
   if (isLoading) {
     return (
