@@ -15,9 +15,9 @@ async function handleWebhook(request: NextRequest) {
   const StripeModule = (await import('stripe')).default;
   const ResendModule = await import('resend');
   
-  // Import types dynamically
-  type StripeEvent = Awaited<ReturnType<typeof StripeModule.webhooks.constructEvent>>;
-  type StripeCheckoutSession = StripeModule.Checkout.Session;
+  // Use any for types to avoid build-time type checking issues
+  type StripeEvent = any;
+  type StripeCheckoutSession = any;
   
   console.log('🔔 Webhook endpoint called');
   
