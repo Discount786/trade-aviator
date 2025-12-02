@@ -5,6 +5,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+// Force dynamic rendering - useSearchParams requires this
+export const dynamic = 'force-dynamic';
+
 export default function PaymentSuccessPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
