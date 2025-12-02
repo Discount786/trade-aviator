@@ -229,6 +229,19 @@ canvas {
   transform: translateZ(0);
 }
 
+/* Digital Globe Positioning - underneath hero text */
+.digital-globe-position {
+  /* Mobile: Hero padding (118px) + Text height (~100px) = ~218px */
+  top: calc(110px + 8px + 100px);
+}
+
+@media (min-width: 768px) {
+  .digital-globe-position {
+    /* Desktop: Hero padding (164px) + Text height (~150px) = ~314px */
+    top: calc(148px + 16px + 150px);
+  }
+}
+
 @layer base {
   * {
     margin: 0;

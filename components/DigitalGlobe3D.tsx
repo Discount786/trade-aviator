@@ -320,14 +320,14 @@ export default function DigitalGlobe3D() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed right-0 top-0 pointer-events-none opacity-30"
+      className="fixed right-0 digital-globe-position pointer-events-none opacity-30"
       style={{
         width: "650px",
         height: "650px",
         maxWidth: "90vw",
         maxHeight: "90vh",
         zIndex: 0, // Behind navigation (z-50) but visible
-        transform: "translateX(5%) translateY(5%)",
+        transform: "translateX(5%)",
         willChange: "transform",
       }}
     />
