@@ -13,7 +13,7 @@ export default function DigitalGlobe3D() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || typeof window === 'undefined') return;
 
     try {
       const canvas = canvasRef.current;

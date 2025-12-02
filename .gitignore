@@ -33,8 +33,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large video files
-public/demo.mp4
+# large video files (commented out - needed for production)
+# public/demo.mp4
 
 
 
