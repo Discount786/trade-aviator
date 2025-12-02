@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
-import { Resend } from 'resend';
+import type Stripe from 'stripe';
+import type { Resend } from 'resend';
 
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
@@ -8,6 +8,10 @@ export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
   console.log('🔔 Webhook endpoint called');
+  
+  // Dynamic imports to prevent build-time execution
+  const StripeModule = (await import('stripe')).default;
+  const ResendModule = await import('resend');
   
   // Initialize Stripe inside the function to avoid build-time errors
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -18,13 +22,13 @@ export async function POST(request: NextRequest) {
     );
   }
   
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const stripe = new StripeModule(process.env.STRIPE_SECRET_KEY);
   
   // Initialize Resend with error checking
-  let resend: Resend | null = null;
+  let resend: InstanceType<typeof ResendModule.Resend> | null = null;
   if (process.env.RESEND_API_KEY) {
     try {
-      resend = new Resend(process.env.RESEND_API_KEY);
+      resend = new ResendModule.Resend(process.env.RESEND_API_KEY);
       console.log('✅ Resend initialized successfully');
     } catch (error) {
       console.error('❌ Failed to initialize Resend:', error);
