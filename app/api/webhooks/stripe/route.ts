@@ -2,24 +2,33 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-// Initialize Resend with error checking
-let resend: Resend | null = null;
-if (process.env.RESEND_API_KEY) {
-  try {
-    resend = new Resend(process.env.RESEND_API_KEY);
-    console.log('✅ Resend initialized successfully');
-  } catch (error) {
-    console.error('❌ Failed to initialize Resend:', error);
-  }
-} else {
-  console.error('❌ RESEND_API_KEY is not set in environment variables');
-}
-
 export async function POST(request: NextRequest) {
   console.log('🔔 Webhook endpoint called');
+  
+  // Initialize Stripe inside the function to avoid build-time errors
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.error('❌ STRIPE_SECRET_KEY is not set in environment variables');
+    return NextResponse.json(
+      { error: 'Server configuration error. STRIPE_SECRET_KEY is not set.' },
+      { status: 500 }
+    );
+  }
+  
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  
+  // Initialize Resend with error checking
+  let resend: Resend | null = null;
+  if (process.env.RESEND_API_KEY) {
+    try {
+      resend = new Resend(process.env.RESEND_API_KEY);
+      console.log('✅ Resend initialized successfully');
+    } catch (error) {
+      console.error('❌ Failed to initialize Resend:', error);
+    }
+  } else {
+    console.error('❌ RESEND_API_KEY is not set in environment variables');
+  }
+  
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
 
