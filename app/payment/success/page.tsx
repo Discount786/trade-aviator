@@ -178,18 +178,3 @@ export default function PaymentSuccessPage() {
   );
 }
 
-export default function PaymentSuccessPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center" style={{ 
-        background: 'linear-gradient(135deg, #0F0F12 0%, #1B1D27 100%)',
-        color: '#FFFFFF'
-      }}>
-        <div className="text-xl">Loading...</div>
-      </div>
-    }>
-      <PaymentSuccessContent />
-    </Suspense>
-  );
-}
-
