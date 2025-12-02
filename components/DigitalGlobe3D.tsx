@@ -224,45 +224,44 @@ export default function DigitalGlobe3D() {
     const clock = new THREE.Clock();
 
     const animate = () => {
-      if (!isVisible) {
-        animationFrameRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
+      // Always continue animation, even if tab is not visible (just don't render)
       const delta = clock.getDelta();
       time += delta;
 
-      // Constant rotation - globe rotates continuously on its own
-      globeGroup.rotation.y += 0.008; // Slightly slower for better performance
-      
-      // Optional: Add slight vertical rotation for more dynamic movement
-      globeGroup.rotation.x = Math.sin(time * 0.5) * 0.2;
+      if (isVisible) {
+        // Constant rotation - globe rotates continuously on its own
+        globeGroup.rotation.y += 0.008; // Slightly slower for better performance
+        
+        // Optional: Add slight vertical rotation for more dynamic movement
+        globeGroup.rotation.x = Math.sin(time * 0.5) * 0.2;
 
-      // Pulse points - only update every few frames for performance
-      if (Math.floor(time * 10) % 2 === 0) {
-        const positions = pointGeometry.attributes.position.array as Float32Array;
-        const sizes = pointGeometry.attributes.size.array as Float32Array;
-        for (let i = 0; i < pointCount; i += 2) { // Update every other point
-          const pulse = Math.sin(time * 2 + i * 0.1) * 0.5 + 1;
-          pointSizes[i] = sizes[i] * pulse;
-          if (i + 1 < pointCount) {
-            pointSizes[i + 1] = sizes[i + 1] * pulse; // Copy to next point
+        // Pulse points - only update every few frames for performance
+        if (Math.floor(time * 10) % 2 === 0) {
+          const positions = pointGeometry.attributes.position.array as Float32Array;
+          const sizes = pointGeometry.attributes.size.array as Float32Array;
+          for (let i = 0; i < pointCount; i += 2) { // Update every other point
+            const pulse = Math.sin(time * 2 + i * 0.1) * 0.5 + 1;
+            pointSizes[i] = sizes[i] * pulse;
+            if (i + 1 < pointCount) {
+              pointSizes[i + 1] = sizes[i + 1] * pulse; // Copy to next point
+            }
           }
+          pointGeometry.attributes.size.needsUpdate = true;
         }
-        pointGeometry.attributes.size.needsUpdate = true;
+
+        // Animate orbiting particles
+        orbitParticles.forEach((particle, i) => {
+          const orbit = particle as any;
+          orbit.orbitAngle += orbit.orbitSpeed * delta;
+          const x = Math.cos(orbit.orbitAngle) * orbit.orbitRadius;
+          const z = Math.sin(orbit.orbitAngle) * orbit.orbitRadius;
+          const y = Math.sin(orbit.orbitAngle * 2) * orbit.orbitHeight;
+          particle.position.set(x, y, z);
+        });
+
+        renderer.render(scene, camera);
       }
-
-      // Animate orbiting particles
-      orbitParticles.forEach((particle, i) => {
-        const orbit = particle as any;
-        orbit.orbitAngle += orbit.orbitSpeed * delta;
-        const x = Math.cos(orbit.orbitAngle) * orbit.orbitRadius;
-        const z = Math.sin(orbit.orbitAngle) * orbit.orbitRadius;
-        const y = Math.sin(orbit.orbitAngle * 2) * orbit.orbitHeight;
-        particle.position.set(x, y, z);
-      });
-
-      renderer.render(scene, camera);
+      
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
@@ -321,14 +320,14 @@ export default function DigitalGlobe3D() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-30"
+      className="fixed right-0 top-0 pointer-events-none opacity-30"
       style={{
         width: "650px",
         height: "650px",
         maxWidth: "90vw",
         maxHeight: "90vh",
-        zIndex: 1,
-        transform: "translateX(5%) translateY(-50%)",
+        zIndex: 0, // Behind navigation (z-50) but visible
+        transform: "translateX(5%) translateY(5%)",
         willChange: "transform",
       }}
     />
