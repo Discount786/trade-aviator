@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+
+// Force dynamic rendering to prevent build-time execution
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
   try {
@@ -34,6 +37,9 @@ export async function GET(request: NextRequest) {
       }, { status: 500 });
     }
 
+    // Dynamic import to prevent build-time execution
+    const { Resend } = await import('resend');
+    
     // Try to send a test email
     const resend = new Resend(process.env.RESEND_API_KEY);
     
@@ -108,6 +114,9 @@ export async function POST(request: NextRequest) {
         status: 'error'
       }, { status: 500 });
     }
+
+    // Dynamic import to prevent build-time execution
+    const { Resend } = await import('resend');
 
     // Try to send a test email to the specified address
     const resend = new Resend(process.env.RESEND_API_KEY);

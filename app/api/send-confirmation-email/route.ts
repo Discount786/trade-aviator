@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-import Stripe from 'stripe';
 
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
@@ -34,6 +32,10 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Dynamic imports to prevent build-time execution
+    const Stripe = (await import('stripe')).default;
+    const { Resend } = await import('resend');
 
     // Initialize services
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

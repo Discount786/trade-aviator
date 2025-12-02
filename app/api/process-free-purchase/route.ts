@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
@@ -26,6 +25,9 @@ export async function POST(request: NextRequest) {
       itemsCount: items.length,
       discountCode
     });
+
+    // Dynamic import to prevent build-time execution
+    const { Resend } = await import('resend');
 
     // Initialize Resend inside the function to ensure env vars are loaded
     let emailSent = false;
