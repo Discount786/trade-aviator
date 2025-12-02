@@ -12,6 +12,11 @@ export const revalidate = 0;
 export const dynamicParams = true;
 
 export async function POST(request: NextRequest) {
+  // Skip execution during build time
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return NextResponse.json({ error: 'Not available during build' }, { status: 503 });
+  }
+  
   console.log('🔔 Webhook endpoint called');
   
   // Dynamic imports to prevent build-time execution
