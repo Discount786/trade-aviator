@@ -49,8 +49,14 @@ export default function PageLoader() {
         // Only show loading for internal links that change the page
         if (href.startsWith(currentOrigin)) {
           const url = new URL(href);
-          // Don't show for hash links (same page anchors) or if already loading
-          if ((url.pathname !== currentPath || url.hash) && !isLoading) {
+          // Don't show for hash-only links (same page anchors like #video)
+          // Only show loading if pathname actually changes (different page)
+          if (url.pathname === currentPath && url.hash) {
+            // This is a hash link on the same page - don't show loading
+            return;
+          }
+          // Only show loading if navigating to a different page
+          if (url.pathname !== currentPath && !isLoading) {
             setIsLoading(true);
           }
         }

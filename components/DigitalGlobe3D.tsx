@@ -17,9 +17,10 @@ export default function DigitalGlobe3D() {
 
     try {
       const canvas = canvasRef.current;
-      // Ensure canvas has dimensions
-      const width = 650;
-      const height = 650;
+      // Ensure canvas has dimensions - responsive for mobile
+      const isMobile = window.innerWidth < 768;
+      const width = isMobile ? Math.min(400, window.innerWidth * 0.9) : 650;
+      const height = isMobile ? Math.min(400, window.innerWidth * 0.9) : 650;
 
     // Scene
     const scene = new THREE.Scene();
@@ -35,11 +36,11 @@ export default function DigitalGlobe3D() {
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
-      antialias: true,
+      antialias: !isMobile, // Disable antialiasing on mobile for better performance
       powerPreference: "high-performance",
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2)); // Lower pixel ratio on mobile
     renderer.setClearColor(0x000000, 0); // Transparent
     renderer.sortObjects = false; // Disable sorting for better performance
     rendererRef.current = renderer;
@@ -96,8 +97,8 @@ export default function DigitalGlobe3D() {
       globeGroup.add(lngLine);
     }
 
-    // Data points (dots)
-    const pointCount = 300;
+    // Data points (dots) - reduce on mobile for performance
+    const pointCount = isMobile ? 150 : 300;
     const pointGeometry = new THREE.BufferGeometry();
     const pointPositions = new Float32Array(pointCount * 3);
     const pointColors = new Float32Array(pointCount * 3);
@@ -141,10 +142,10 @@ export default function DigitalGlobe3D() {
     const points = new THREE.Points(pointGeometry, pointMaterial);
     globeGroup.add(points);
 
-    // Connection lines between some points (trading routes)
+    // Connection lines between some points (trading routes) - reduce on mobile
     const connectionGeometry = new THREE.BufferGeometry();
     const connectionPositions: number[] = [];
-    const connectionCount = 50;
+    const connectionCount = isMobile ? 25 : 50;
 
     for (let i = 0; i < connectionCount; i++) {
       const index1 = Math.floor(Math.random() * pointCount);
@@ -184,8 +185,8 @@ export default function DigitalGlobe3D() {
     const connections = new THREE.LineSegments(connectionGeometry, connectionMaterial);
     globeGroup.add(connections);
 
-    // Orbiting particles
-    const orbitParticleCount = 8;
+    // Orbiting particles - reduce on mobile
+    const orbitParticleCount = isMobile ? 4 : 8;
     const orbitParticles: THREE.Mesh[] = [];
     for (let i = 0; i < orbitParticleCount; i++) {
       const particleGeometry = new THREE.SphereGeometry(0.03, 8, 8);
@@ -277,8 +278,9 @@ export default function DigitalGlobe3D() {
     const handleResize = () => {
       if (!canvas || !camera || !renderer) return;
       
-      const newWidth = canvas.clientWidth || 650;
-      const newHeight = canvas.clientHeight || 650;
+      const isMobile = window.innerWidth < 768;
+      const newWidth = isMobile ? Math.min(400, window.innerWidth * 0.9) : (canvas.clientWidth || 650);
+      const newHeight = isMobile ? Math.min(400, window.innerWidth * 0.9) : (canvas.clientHeight || 650);
 
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
@@ -319,10 +321,12 @@ export default function DigitalGlobe3D() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-30 hidden lg:block"
+      className="fixed right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-30"
       style={{
         width: "650px",
         height: "650px",
+        maxWidth: "90vw",
+        maxHeight: "90vh",
         zIndex: 1,
         transform: "translateX(5%) translateY(-50%)",
         willChange: "transform",

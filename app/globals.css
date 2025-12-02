@@ -6,6 +6,28 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent layout shifts */
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling optimization */
+html {
+  scroll-behavior: smooth;
+  /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize scroll performance */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 html {
@@ -13,6 +35,18 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  /* Smooth scrolling with hardware acceleration */
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  /* Prevent layout shifts */
+  overflow-x: hidden;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Optimize video rendering */
@@ -21,6 +55,14 @@ video {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   contain: layout style paint;
+  /* Smooth video playback */
+  will-change: contents;
+  /* Prevent layout shifts */
+  width: 100%;
+  height: auto;
+  /* Optimize loading */
+  preload: "metadata";
+  playsinline: true;
 }
 
 /* GPU acceleration for animations - only when animating */
@@ -43,11 +85,87 @@ video {
   backface-visibility: hidden;
 }
 
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Banner text - tighter line spacing on mobile */
+.banner-text-mobile {
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .banner-text-mobile {
+    line-height: normal;
+    font-weight: bold;
+  }
+}
+
+/* Navigation positioning below banner */
+.nav-below-banner {
+  top: calc(50px + 10px) !important;
+}
+
+@media (min-width: 768px) {
+  .nav-below-banner {
+    top: calc(60px + 8px) !important;
+  }
+}
+
+/* Hero section padding - responsive */
+.hero-with-banner {
+  padding-top: calc(110px + 8px);
+}
+
+.hero-no-banner {
+  padding-top: calc(60px + 4px);
+}
+
+@media (min-width: 768px) {
+  .hero-with-banner {
+    padding-top: calc(148px + 16px) !important; /* Banner (~60px) + Nav (80px) + spacing */
+  }
+  
+  .hero-no-banner {
+    padding-top: calc(80px + 16px) !important; /* Nav (80px) + spacing */
+  }
+}
+
+/* Get Access Button - 25% larger */
+.get-access-btn {
+  padding: 0.625rem 1.25rem; /* 25% larger: py-2.5 (0.625rem) px-5 (1.25rem) */
+  font-size: 0.9375rem; /* 25% larger than text-sm (0.875rem * 1.25) */
+}
+
+@media (min-width: 768px) {
+  .get-access-btn {
+    padding: 0.9375rem 2.1875rem; /* 25% larger: py-3.75 px-8.75 */
+    font-size: 1.125rem; /* 25% larger than text-base (0.9rem * 1.25) */
+  }
+}
+
 /* Optimize images */
 img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   content-visibility: auto;
+  /* GPU acceleration for images */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Prevent layout shifts */
+  height: auto;
+  max-width: 100%;
+  /* Lazy loading optimization */
+  loading: lazy;
+  decoding: async;
 }
 
 /* Reduce repaints on animated elements */
@@ -66,6 +184,42 @@ img {
 /* Performance: Reduce layout shifts */
 section, div[class*="motion"] {
   contain: layout style;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize all motion components */
+[data-framer-component] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Smooth animations on mobile */
+@media (max-width: 767px) {
+  [data-framer-component] {
+    /* Reduce animation complexity on mobile for better performance */
+    will-change: auto;
+  }
+  
+  /* Optimize scroll performance on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  video, canvas {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Optimize images on mobile */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
 }
 
 /* Optimize canvas elements */

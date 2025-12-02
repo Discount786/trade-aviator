@@ -81,10 +81,10 @@ export default function Home() {
           // Show nav and banner only when at the top of the page (within 100px)
           const scrollY = window.scrollY;
           if (scrollY < 100) {
-            setShowNav(true);
+        setShowNav(true);
             setShowBanner(true);
-          } else {
-            setShowNav(false);
+      } else {
+        setShowNav(false);
             setShowBanner(false);
           }
           ticking = false;
@@ -119,45 +119,55 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 z-[100]"
         style={{
           background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.40) 0%, rgba(37, 99, 235, 0.40) 50%, rgba(59, 130, 246, 0.40) 100%)',
-          padding: '12px 0',
+          paddingTop: '4px',
+          paddingBottom: 'calc(4px * 0.855625)',
+          minHeight: 'auto',
           boxShadow: '0 4px 20px rgba(30, 58, 138, 0.3)',
           backdropFilter: 'blur(10px)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
-          <div className="text-center md:text-left">
-            <span className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}>
-              FREE FOR A LIMITED TIME ONLY - USE CODE TA26 AT CHECKOUT
+        <div className="max-w-7xl mx-auto px-2 md:px-5 flex flex-row items-center justify-center gap-1 md:gap-6 py-0.5 md:py-0">
+          <div className="text-center md:text-left flex-shrink min-w-0">
+            <span 
+              className="font-bold text-[9px] md:text-lg lg:text-xl md:leading-tight banner-text-mobile" 
+              style={{ 
+                color: '#FFFFFF', 
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                display: 'block'
+              }}
+            >
+              <span style={{ display: 'block', lineHeight: '1em' }}>FREE FOR A LIMITED TIME ONLY</span>
+              <span style={{ display: 'block', lineHeight: '1em', marginTop: '0.1em' }}>USE CODE TA26 AT CHECKOUT</span>
             </span>
           </div>
-          <div className="flex items-center gap-2 md:gap-4">
-            <div className="flex items-center gap-1 md:gap-2">
-              <div className="text-center px-2 md:px-3 py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
-                <div className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
+          <div className="flex items-center gap-0.5 md:gap-4 flex-shrink-0">
+            <div className="flex items-center gap-0.5 md:gap-2">
+              <div className="text-center px-1 md:px-3 py-0.5 md:py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
+                <div className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>
                   {String(timeLeft.days).padStart(2, '0')}
                 </div>
-                <div className="text-xs md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>DAYS</div>
+                <div className="text-[8px] md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>D</div>
               </div>
-              <span className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
-              <div className="text-center px-2 md:px-3 py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
-                <div className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
+              <span className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
+              <div className="text-center px-1 md:px-3 py-0.5 md:py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
+                <div className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>
                   {String(timeLeft.hours).padStart(2, '0')}
                 </div>
-                <div className="text-xs md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>HRS</div>
+                <div className="text-[8px] md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>H</div>
               </div>
-              <span className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
-              <div className="text-center px-2 md:px-3 py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
-                <div className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
+              <span className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
+              <div className="text-center px-1 md:px-3 py-0.5 md:py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
+                <div className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>
                   {String(timeLeft.minutes).padStart(2, '0')}
                 </div>
-                <div className="text-xs md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>MIN</div>
+                <div className="text-[8px] md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>M</div>
               </div>
-              <span className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
-              <div className="text-center px-2 md:px-3 py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
-                <div className="font-bold text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
+              <span className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>:</span>
+              <div className="text-center px-1 md:px-3 py-0.5 md:py-1 rounded" style={{ background: 'rgba(255, 255, 255, 0.2)', backdropFilter: 'blur(10px)' }}>
+                <div className="font-bold text-xs md:text-xl" style={{ color: '#FFFFFF' }}>
                   {String(timeLeft.seconds).padStart(2, '0')}
                 </div>
-                <div className="text-xs md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>SEC</div>
+                <div className="text-[8px] md:text-sm" style={{ color: '#FFFFFF', opacity: 0.9 }}>S</div>
               </div>
             </div>
           </div>
@@ -222,27 +232,35 @@ export default function Home() {
           pointerEvents: showNav ? 'auto' : 'none'
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed left-0 right-0 z-50"
+        className={`fixed left-0 right-0 z-50 ${showBanner ? 'nav-below-banner' : ''}`}
         style={{
-          background: 'transparent',
-          top: 'calc(60px + 16px)', // Banner height + small gap
+          background: 'rgba(15, 15, 18, 0.95)',
+          backdropFilter: 'blur(10px)',
+          top: showBanner ? undefined : '0px', // Use CSS class when banner is shown
         }}
       >
-        <div className="max-w-7xl mx-auto px-5 flex justify-between items-center h-20">
+        <div className="max-w-7xl mx-auto px-3 md:px-5 flex justify-between items-center h-14 md:h-20">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center"
+            className="flex items-center flex-1 min-w-0"
           >
             {/* Trade Aviator Logo */}
-            <svg width="244" height="49" viewBox="0 0 200 40" style={{ opacity: 1 }}>
-              {/* Three vertical bars */}
+            <svg 
+              className="h-auto" 
+              viewBox="0 0 200 40" 
+              style={{ 
+                opacity: 1, 
+                width: 'clamp(140px, 30vw, 244px)', 
+                height: 'auto',
+                maxWidth: '100%'
+              }}
+              preserveAspectRatio="xMidYMid meet"
+            >
               <rect x="5" y="25" width="4" height="8" fill="#D1D5DB" />
               <rect x="11" y="20" width="4" height="13" fill="#D1D5DB" />
               <rect x="17" y="12" width="4" height="21" fill="#D1D5DB" />
-              
-              {/* Text */}
               <text 
                 x="28" 
                 y="18" 
@@ -271,7 +289,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center gap-6"
+            className="flex items-center gap-2 md:gap-6 flex-shrink-0 ml-2"
           >
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
@@ -279,12 +297,10 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-7 py-3 font-bold rounded-lg"
+              className="font-bold rounded-lg get-access-btn whitespace-nowrap"
               style={{
                 background: 'linear-gradient(135deg, #3A8BFF, #56E0FF)',
                 color: '#FFFFFF',
-                fontSize: '14.64px', // 12px * 1.22 = 14.64px
-                transform: 'scale(1.22)',
               }}
               onClick={(e) => {
                 e.preventDefault();
@@ -320,10 +336,13 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen px-5" style={{ zIndex: 10, paddingTop: 'calc(10% + 80px)' }}>
+      <section 
+        className={`relative min-h-screen px-5 ${showBanner ? 'hero-with-banner' : 'hero-no-banner'}`}
+        style={{ zIndex: 10 }}
+      >
         <div className="max-w-7xl mx-auto">
           {/* Text Content - Centered, fixed position */}
-          <div className="flex flex-col items-center justify-center" style={{ minHeight: '40vh' }}>
+          <div className="flex flex-col items-center justify-center" style={{ minHeight: '38.4vh' }}>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -366,7 +385,7 @@ export default function Home() {
                 willChange: 'transform',
               }}
             >
-              <p className="text-lg md:text-xl font-semibold" style={{ 
+              <p className="text-lg md:text-xl font-semibold text-center md:text-left" style={{ 
                 color: '#FFFFFF', 
                 fontSize: '1.15em',
                 fontWeight: 600,
@@ -377,10 +396,19 @@ export default function Home() {
                   href="#video"
                   onClick={(e) => {
                     e.preventDefault();
-                    const videoElement = document.querySelector('video');
+                    // Small delay to ensure smooth scroll on mobile
+                    setTimeout(() => {
+                      const videoElement = document.querySelector('video') || document.getElementById('video');
                     if (videoElement) {
-                      videoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                        const offset = 100; // Account for fixed navigation/banner
+                        const elementPosition = videoElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }, 50);
                   }}
                   className="underline hover:no-underline font-bold cursor-pointer"
                   style={{ 
@@ -399,8 +427,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-            className="max-w-4xl mx-auto"
-            style={{ marginTop: '2rem', transform: 'scale(1.05)' }}
+            className="max-w-4xl mx-auto px-2 md:px-0 mt-[2px] md:mt-8"
           >
             <div className="video-animated-border">
               <div className="relative rounded-xl overflow-hidden" style={{
@@ -411,33 +438,33 @@ export default function Home() {
                 <video
                   id="video"
                   className="w-full aspect-video object-cover"
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
                   preload="metadata"
-                  style={{
-                    transform: 'translateZ(0)',
-                    backfaceVisibility: 'hidden',
+                style={{
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
                     contain: 'layout style paint',
-                  }}
-                  onError={(e) => {
-                    console.error('Video failed to load:', e);
-                  }}
-                  onLoadedData={(e) => {
-                    const video = e.currentTarget;
-                    video.play().catch(() => {
-                      // Auto-play was prevented, user interaction required
-                    });
-                  }}
-                  onCanPlay={() => {
-                    // Video is ready to play smoothly
-                  }}
-                >
-                  <source src="/demo.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                }}
+                onError={(e) => {
+                  console.error('Video failed to load:', e);
+                }}
+                onLoadedData={(e) => {
+                  const video = e.currentTarget;
+                  video.play().catch(() => {
+                    // Auto-play was prevented, user interaction required
+                  });
+                }}
+                onCanPlay={() => {
+                  // Video is ready to play smoothly
+                }}
+              >
+                <source src="/demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
               </div>
             </div>
           </motion.div>
@@ -549,36 +576,36 @@ export default function Home() {
           </motion.div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 mb-12">
             {/* Card 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 TIME WASTED
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Hours glued to charts — missing life & still missing the best moves.
               </p>
             </motion.div>
@@ -589,29 +616,29 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 FOMO = LOSS
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Overtrading & revenge trading — chasing setups to claw back losses until accounts blow.
               </p>
             </motion.div>
@@ -622,29 +649,29 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center col-span-2 md:col-span-1"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 LACKING CONSISTENCY
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Inconsistent results — no steady edge, just random wins and losses.
               </p>
             </motion.div>
@@ -660,9 +687,27 @@ export default function Home() {
           >
             <motion.button
               onClick={() => {
-                const productsSection = document.getElementById('products');
-                if (productsSection) {
-                  productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const tradeAviatorProduct = document.getElementById('trade-aviator-product');
+                if (tradeAviatorProduct) {
+                  const offset = 100; // Account for fixed navigation/banner
+                  const elementPosition = tradeAviatorProduct.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  // Fallback to products section if product not found
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    const offset = 100;
+                    const elementPosition = productsSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
                 }
               }}
               whileHover={{ scale: 1.05 }}
@@ -709,36 +754,36 @@ export default function Home() {
           </motion.div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 mb-12">
             {/* Card 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 HUMAN EMOTION - REMOVED
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Emotion-free execution - rules-based quant logic removes fear, greed & hesitation.
               </p>
             </motion.div>
@@ -749,29 +794,29 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 FREEDOM
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Freedom from the charts - trade without being chained to charts all day.
               </p>
             </motion.div>
@@ -782,29 +827,29 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-6 flex flex-col items-center text-center"
+              className="rounded-xl p-4 md:p-6 flex flex-col items-center text-center col-span-2 md:col-span-1"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                minHeight: '280px',
+                minHeight: '200px',
                 height: '100%',
               }}
             >
               <div 
-                className="w-12 h-12 rounded-lg mb-4 flex items-center justify-center mx-auto"
+                className="w-8 h-8 md:w-12 md:h-12 rounded-lg mb-3 md:mb-4 flex items-center justify-center mx-auto"
                 style={{
                   background: 'linear-gradient(135deg, #A78BFA 0%, #3A8BFF 100%)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="20" height="20" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none">
                   <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="font-bold" style={{ color: '#FFFFFF', fontSize: '1.3rem', lineHeight: '1.4', minHeight: '3.6rem', marginBottom: '0.11rem' }}>
+              <h3 className="font-bold text-sm md:text-xl" style={{ color: '#FFFFFF', lineHeight: '1.4', minHeight: '2.8rem', marginBottom: '0.5rem' }}>
                 DATA DRIVEN PERFORMANCE
               </h3>
-              <p className="leading-relaxed" style={{ color: '#E5E7EB', fontSize: '1.04rem', lineHeight: '1.5' }}>
+              <p className="leading-relaxed text-xs md:text-base" style={{ color: '#E5E7EB', lineHeight: '1.5' }}>
                 Reliable performance - a steady edge designed to deliver repeatable results.
               </p>
             </motion.div>
@@ -820,9 +865,27 @@ export default function Home() {
           >
             <motion.button
               onClick={() => {
-                const productsSection = document.getElementById('products');
-                if (productsSection) {
-                  productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const tradeAviatorProduct = document.getElementById('trade-aviator-product');
+                if (tradeAviatorProduct) {
+                  const offset = 100; // Account for fixed navigation/banner
+                  const elementPosition = tradeAviatorProduct.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  // Fallback to products section if product not found
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    const offset = 100;
+                    const elementPosition = productsSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
                 }
               }}
               whileHover={{ scale: 1.05 }}
@@ -866,7 +929,8 @@ export default function Home() {
           </motion.div>
 
           {/* Trading Interfaces Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="mb-6">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-6">
             {[
               { num: 5, name: 'trading1' },
               { num: 6, name: 'trading2' },
@@ -883,20 +947,24 @@ export default function Home() {
                   position: 'relative',
                 }}
               >
-                <div className="animated-blue-border">
+                  <div className="animated-blue-border w-full" style={{ display: 'block', maxWidth: '100%' }}>
                   <img
                     src={`/trading${i + 1}.jpg.png`}
                     alt={`Trading interface ${item.num}`}
-                    loading="lazy"
-                    decoding="async"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto"
+                      style={{ display: 'block', width: '100%', height: 'auto' }}
                   />
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* Chat Interfaces Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="mb-16">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-6">
             {[
               { num: 8, name: 'chat1' },
               { num: 9, name: 'chat2' },
@@ -913,46 +981,51 @@ export default function Home() {
                   position: 'relative',
                 }}
               >
-                <div className="animated-blue-border">
+                  <div className="animated-blue-border w-full" style={{ display: 'block', maxWidth: '100%' }}>
                   <img
                     src={`/chat${i + 1}.jpg.png`}
                     alt={`Chat interface ${item.num}`}
-                    loading="lazy"
-                    decoding="async"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto"
+                      style={{ display: 'block', width: '100%', height: 'auto' }}
                   />
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
             {/* Testimonial 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-6"
+              className="rounded-xl p-3 md:p-6"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                minHeight: '200px',
+                height: '100%',
               }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
                   style={{ background: '#A78BFA', color: '#FFFFFF' }}
                 >
                   SS
                 </div>
                 <div>
-                  <h4 className="font-bold" style={{ color: '#FFFFFF' }}>Saim Saudagar</h4>
-                  <p className="text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
+                  <h4 className="font-bold text-xs md:text-base" style={{ color: '#FFFFFF' }}>Saim Saudagar</h4>
+                  <p className="text-xs md:text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
                 </div>
               </div>
-              <p className="text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
+              <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "Such an easy set up and great returns, forever thankful to be part of this great investment!"
               </p>
             </motion.div>
@@ -963,26 +1036,28 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-6"
+              className="rounded-xl p-3 md:p-6"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                minHeight: '200px',
+                height: '100%',
               }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
                   style={{ background: '#A78BFA', color: '#FFFFFF' }}
                 >
                   BA
                 </div>
                 <div>
-                  <h4 className="font-bold" style={{ color: '#FFFFFF' }}>Basheer Abdullah</h4>
-                  <p className="text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
+                  <h4 className="font-bold text-xs md:text-base" style={{ color: '#FFFFFF' }}>Basheer Abdullah</h4>
+                  <p className="text-xs md:text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
                 </div>
               </div>
-              <p className="text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
+              <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "I used to trade manually all day and lost 4 challenges. Now the EA earns while I sleep. Made 10% in 5 days. Highly recommended!"
               </p>
             </motion.div>
@@ -993,26 +1068,28 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-6"
+              className="rounded-xl p-3 md:p-6 col-span-2 md:col-span-1"
               style={{
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                minHeight: '200px',
+                height: '100%',
               }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg"
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
                   style={{ background: '#A78BFA', color: '#FFFFFF' }}
                 >
                   DA
                 </div>
                 <div>
-                  <h4 className="font-bold" style={{ color: '#FFFFFF' }}>Daniell</h4>
-                  <p className="text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
+                  <h4 className="font-bold text-xs md:text-base" style={{ color: '#FFFFFF' }}>Daniell</h4>
+                  <p className="text-xs md:text-sm" style={{ color: '#A78BFA' }}>TA MEMBER</p>
                 </div>
               </div>
-              <p className="text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
+              <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "First Auto Trader i have used and its worked wonders. Every week compounding my account for greater profits!"
               </p>
             </motion.div>
@@ -1050,7 +1127,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8 items-stretch">
             {/* Product 1: A FREE TRADING EBOOK */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1058,7 +1135,7 @@ export default function Home() {
             viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
               whileHover={{ y: -8 }}
-              className="rounded-3xl p-10 relative overflow-hidden flex flex-col group"
+              className="rounded-3xl p-4 md:p-10 relative overflow-hidden flex flex-col group"
               style={{
                 background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.95) 100%)',
                 border: '2px solid rgba(148, 163, 184, 0.2)',
@@ -1085,7 +1162,7 @@ export default function Home() {
                     </span>
                   </div>
                   <motion.h3 
-                    className="text-3xl md:text-4xl font-bold mb-2"
+                    className="text-xl md:text-4xl font-bold mb-2"
                     style={{ 
                       color: '#FFFFFF',
                       textShadow: '0 0 15px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.3)',
@@ -1107,20 +1184,20 @@ export default function Home() {
                     FREE E BOOK
                   </motion.h3>
                 </div>
-                <div className="mb-8">
+                <div className="mb-4 md:mb-8">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold" style={{ color: '#FFFFFF' }}>FREE</span>
+                    <span className="text-2xl md:text-5xl font-bold" style={{ color: '#FFFFFF' }}>FREE</span>
                   </div>
-                  <p className="text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  <p className="text-xs md:text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                     No credit card required
                   </p>
                 </div>
-                <div className="mb-8">
-                  <p className="text-base mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                <div className="mb-4 md:mb-8">
+                  <p className="text-xs md:text-base mb-2 md:mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                     Learn the fundamentals of trading with our comprehensive guide. Download instantly and start your journey.
                   </p>
                 </div>
-                <div className="mb-8 space-y-4">
+                <div className="mb-4 md:mb-8 space-y-2 md:space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -1128,7 +1205,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Comprehensive Trading Guide</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Comprehensive Trading Guide</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1137,7 +1214,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Instant Download</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Instant Download</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1146,7 +1223,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>PDF Format</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>PDF Format</span>
                   </div>
                 </div>
                 <motion.button
@@ -1162,7 +1239,7 @@ export default function Home() {
                   }}
                   whileHover={{ scale: 1.03, boxShadow: '0 10px 25px rgba(34, 197, 94, 0.4)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="w-full py-4 rounded-xl font-bold text-lg transition-all mt-auto relative overflow-hidden"
+                  className="w-full py-2 md:py-4 rounded-xl font-bold text-sm md:text-lg transition-all mt-auto relative overflow-hidden"
                   style={{
                     background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
                     color: '#FFFFFF',
@@ -1177,12 +1254,12 @@ export default function Home() {
             {/* Product 2: TRADE AVIATOR - Featured */}
             <motion.div
               id="trade-aviator-product"
-              initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -8 }}
-              className="rounded-3xl p-10 relative overflow-visible flex flex-col group"
+              className="rounded-3xl p-4 md:p-10 relative overflow-visible flex flex-col group"
               style={{
                 background: 'linear-gradient(135deg, rgba(88, 28, 135, 0.95) 0%, rgba(139, 92, 246, 0.95) 100%)',
                 border: '2px solid rgba(167, 139, 250, 0.5)',
@@ -1206,7 +1283,7 @@ export default function Home() {
               {/* Animated gradient overlay */}
               <motion.div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
+              style={{
                   background: 'linear-gradient(135deg, rgba(58, 139, 255, 0.1) 0%, rgba(86, 224, 255, 0.1) 100%)',
                 }}
               />
@@ -1214,7 +1291,7 @@ export default function Home() {
               <div className="relative z-10 flex flex-col flex-grow">
                 <div className="mb-6" style={{ minHeight: '80px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingTop: '40px' }}>
                   <motion.h3 
-                    className="text-3xl md:text-4xl font-bold mb-2"
+                    className="text-xl md:text-4xl font-bold mb-2"
                     style={{ 
                       color: '#FFFFFF',
                       textShadow: '0 0 15px rgba(167, 139, 250, 0.6), 0 0 30px rgba(58, 139, 255, 0.3)',
@@ -1236,21 +1313,21 @@ export default function Home() {
                     TRADE AVIATOR ACCESS
                   </motion.h3>
                 </div>
-                <div className="mb-8">
+                <div className="mb-4 md:mb-8">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold" style={{ color: '#FFFFFF' }}>£199</span>
-                    <span className="text-lg" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Lifetime</span>
+                    <span className="text-2xl md:text-5xl font-bold" style={{ color: '#FFFFFF' }}>£199</span>
+                    <span className="text-sm md:text-lg" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Lifetime</span>
                   </div>
-                  <p className="text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  <p className="text-xs md:text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                     One-time payment, lifetime access
                   </p>
                 </div>
-                <div className="mb-8">
-                  <p className="text-base mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                <div className="mb-4 md:mb-8">
+                  <p className="text-xs md:text-base mb-2 md:mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                     Ideal for Get started with Trade Aviator. Complete setup and lifetime access included.
                   </p>
                 </div>
-                <div className="mb-8 space-y-4">
+                <div className="mb-4 md:mb-8 space-y-2 md:space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -1258,7 +1335,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Trade Aviator Set Up</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Trade Aviator Set Up</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1267,7 +1344,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Access to our Members Community</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Access to our Members Community</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1276,7 +1353,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Life time Auto Trading</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Life time Auto Trading</span>
                   </div>
                 </div>
                 <motion.button
@@ -1292,7 +1369,7 @@ export default function Home() {
                   }}
                   whileHover={{ scale: 1.03, boxShadow: '0 10px 25px rgba(167, 139, 250, 0.5)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="w-full py-4 rounded-xl font-bold text-lg transition-all mt-auto relative overflow-hidden"
+                  className="w-full py-2 md:py-4 rounded-xl font-bold text-sm md:text-lg transition-all mt-auto relative overflow-hidden"
                   style={{
                     background: 'linear-gradient(135deg, #3A8BFF 0%, #56E0FF 100%)',
                   color: '#FFFFFF',
@@ -1302,16 +1379,16 @@ export default function Home() {
                   <span className="relative z-10">Purchase Now</span>
                 </motion.button>
               </div>
-            </motion.div>
+          </motion.div>
 
             {/* Product 3: FUNDED ACCOUNTS */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ y: -8 }}
-              className="rounded-3xl p-10 relative overflow-hidden flex flex-col group"
+              className="rounded-3xl p-4 md:p-10 relative overflow-hidden flex flex-col group col-span-2 md:col-span-1"
               style={{
                 background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.95) 100%)',
                 border: '2px solid rgba(148, 163, 184, 0.2)',
@@ -1354,20 +1431,20 @@ export default function Home() {
                     FUNDED ACCOUNT SERVICE
                   </motion.h3>
                 </div>
-                <div className="mb-8">
+                <div className="mb-4 md:mb-8">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold" style={{ color: '#FFFFFF' }}>POA</span>
+                    <span className="text-2xl md:text-5xl font-bold" style={{ color: '#FFFFFF' }}>POA</span>
                   </div>
-                  <p className="text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  <p className="text-xs md:text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                     Price On Application
                   </p>
                 </div>
-                <div className="mb-8">
-                  <p className="text-base mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                <div className="mb-4 md:mb-8">
+                  <p className="text-xs md:text-base mb-2 md:mb-4 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                     Guaranteed passed funded account within 48 hours. Professional trading support and private members community included.
                   </p>
                 </div>
-                <div className="mb-8 space-y-4">
+                <div className="mb-4 md:mb-8 space-y-2 md:space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -1375,7 +1452,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#3A8BFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Guaranteed Passed Funded Account Within 48 Hours</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Guaranteed Passed Funded Account Within 48 Hours</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1384,7 +1461,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#3A8BFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Professional Trading Support</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Professional Trading Support</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -1393,7 +1470,7 @@ export default function Home() {
                         <path d="M9 12L11 14L15 10" stroke="#3A8BFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Private Members Community</span>
+                    <span className="text-xs md:text-base leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Private Members Community</span>
                   </div>
                 </div>
             <motion.button
@@ -1408,7 +1485,7 @@ export default function Home() {
                   }}
                   whileHover={{ scale: 1.03, boxShadow: '0 10px 25px rgba(58, 139, 255, 0.4)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="w-full py-4 rounded-xl font-bold text-lg transition-all mt-auto relative overflow-hidden"
+                  className="w-full py-2 md:py-4 rounded-xl font-bold text-sm md:text-lg transition-all mt-auto relative overflow-hidden"
               style={{
                     background: 'linear-gradient(135deg, #3A8BFF 0%, #56E0FF 100%)',
                 color: '#FFFFFF',
