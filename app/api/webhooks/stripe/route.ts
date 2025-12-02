@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import type Stripe from 'stripe';
-import type { Resend } from 'resend';
 
 // Force dynamic rendering to prevent build-time execution
 export const dynamic = 'force-dynamic';
@@ -11,17 +9,17 @@ export const revalidate = 0;
 // Prevent static generation
 export const dynamicParams = true;
 
-export async function POST(request: NextRequest) {
-  // Skip execution during build time
-  if (process.env.NEXT_PHASE === 'phase-production-build') {
-    return NextResponse.json({ error: 'Not available during build' }, { status: 503 });
-  }
-  
-  console.log('🔔 Webhook endpoint called');
-  
+// Lazy load the handler to prevent build-time execution
+async function handleWebhook(request: NextRequest) {
   // Dynamic imports to prevent build-time execution
   const StripeModule = (await import('stripe')).default;
   const ResendModule = await import('resend');
+  
+  // Import types dynamically
+  type StripeEvent = Awaited<ReturnType<typeof StripeModule.webhooks.constructEvent>>;
+  type StripeCheckoutSession = StripeModule.Checkout.Session;
+  
+  console.log('🔔 Webhook endpoint called');
   
   // Initialize Stripe inside the function to avoid build-time errors
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -55,7 +53,7 @@ export async function POST(request: NextRequest) {
   console.log('📋 RESEND_API_KEY set:', !!process.env.RESEND_API_KEY);
   console.log('📋 RESEND_FROM_EMAIL set:', !!process.env.RESEND_FROM_EMAIL);
 
-  let event: Stripe.Event;
+  let event: StripeEvent;
 
   // Verify webhook signature if webhook secret is configured
   if (process.env.STRIPE_WEBHOOK_SECRET && signature) {
@@ -77,7 +75,7 @@ export async function POST(request: NextRequest) {
     // WARNING: This should only be used in development!
     console.warn('⚠️  STRIPE_WEBHOOK_SECRET not set - skipping signature verification (development mode)');
     try {
-      event = JSON.parse(body) as Stripe.Event;
+      event = JSON.parse(body) as StripeEvent;
     } catch (err: any) {
       console.error('Failed to parse webhook event:', err.message);
       return NextResponse.json(
@@ -90,7 +88,7 @@ export async function POST(request: NextRequest) {
   // Handle the checkout.session.completed event
   if (event.type === 'checkout.session.completed') {
     console.log('✅ Webhook received: checkout.session.completed');
-    const session = event.data.object as Stripe.Checkout.Session;
+    const session = event.data.object as StripeCheckoutSession;
     console.log('📋 Session ID:', session.id);
     console.log('📋 Event type:', event.type);
 
@@ -302,5 +300,10 @@ export async function POST(request: NextRequest) {
   
   // Return a response to acknowledge receipt of the event
   return NextResponse.json({ received: true, eventType: event.type });
+}
+
+// Export the handler - this prevents build-time execution
+export async function POST(request: NextRequest) {
+  return handleWebhook(request);
 }
 
