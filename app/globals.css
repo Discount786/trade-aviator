@@ -229,16 +229,18 @@ canvas {
   transform: translateZ(0);
 }
 
-/* Digital Globe Positioning - underneath hero text */
+/* Digital Globe Positioning - aligned with "Advanced Trading Automation" title */
 .digital-globe-position {
-  /* Mobile: Hero padding (118px) + Text height (~100px) = ~218px */
-  top: calc(110px + 8px + 100px);
+  /* Mobile: Banner (~50px) + Nav (~56px) + small spacing = ~110px */
+  top: calc(50px + 56px + 4px);
+  right: 0;
+  position: fixed !important; /* Always stay fixed in top-right */
 }
 
 @media (min-width: 768px) {
   .digital-globe-position {
-    /* Desktop: Hero padding (164px) + Text height (~150px) = ~314px */
-    top: calc(148px + 16px + 150px);
+    /* Desktop: Banner (~60px) + Nav (~80px) + small spacing = ~144px */
+    top: calc(60px + 80px + 4px);
   }
 }
 

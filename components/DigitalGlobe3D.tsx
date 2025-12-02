@@ -321,7 +321,7 @@ export default function DigitalGlobe3D() {
 
   return (
     <div 
-      className="fixed right-0 digital-globe-position pointer-events-none"
+      className="digital-globe-position pointer-events-none"
       style={{
         zIndex: 5,
         width: "650px",
