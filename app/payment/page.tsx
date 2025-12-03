@@ -392,105 +392,106 @@ export default function PaymentPage() {
                     const phone = formData.get('phone') as string;
 
                     try {
-                      // Create Stripe checkout session
-                      const response = await fetch('/api/create-checkout-session', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                          items: cartItems,
-                          customerEmail: email,
-                          customerName: name,
-                          customerPhone: phone,
-                          discountCode: discountApplied ? discountCode : null,
-                        }),
-                      });
+                      // Handle free purchases directly (skip Stripe)
+                      if (total === 0) {
+                        // Process free purchase and send email
+                        try {
+                          const freeResponse = await fetch('/api/process-free-purchase', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              items: cartItems,
+                              customerEmail: email,
+                              customerName: name,
+                              customerPhone: phone,
+                              discountCode: discountApplied ? discountCode : null,
+                            }),
+                          });
 
-                      // Check if response is JSON
-                      const contentType = response.headers.get('content-type');
-                      if (!contentType || !contentType.includes('application/json')) {
-                        const text = await response.text();
-                        console.error('Non-JSON response received:', text.substring(0, 500));
-                        throw new Error(`API route returned HTML instead of JSON. Status: ${response.status}. The route may not be found. Please restart your dev server.`);
-                      }
-
-                      const data = await response.json();
-
-                      if (response.ok) {
-                        // Handle free purchases (no Stripe checkout needed)
-                        if (data.isFree) {
-                          // Process free purchase and send email
-                          try {
-                            const freeResponse = await fetch('/api/process-free-purchase', {
-                              method: 'POST',
-                              headers: {
-                                'Content-Type': 'application/json',
-                              },
-                              body: JSON.stringify({
-                                items: cartItems,
-                                customerEmail: email,
-                                customerName: name,
-                                customerPhone: phone,
-                                discountCode: discountApplied ? discountCode : null,
-                              }),
+                          if (freeResponse.ok) {
+                            const freeData = await freeResponse.json();
+                            console.log('✅ Free purchase processed - FULL RESPONSE:', JSON.stringify(freeData, null, 2));
+                            console.log('📊 Email Status:', {
+                              emailSent: freeData.emailSent,
+                              emailId: freeData.emailId,
+                              emailError: freeData.emailError,
+                              debug: freeData.debug
                             });
-
-                            if (freeResponse.ok) {
-                              const freeData = await freeResponse.json();
-                              console.log('✅ Free purchase processed - FULL RESPONSE:', JSON.stringify(freeData, null, 2));
-                              console.log('📊 Email Status:', {
-                                emailSent: freeData.emailSent,
-                                emailId: freeData.emailId,
-                                emailError: freeData.emailError,
-                                debug: freeData.debug
-                              });
-                              
-                              // Log email status
-                              if (freeData.emailSent) {
-                                console.log('✅ Customer confirmation email was sent successfully');
-                                console.log('📧 Email ID:', freeData.emailId || 'N/A');
-                              } else {
-                                console.error('❌ Customer confirmation email was NOT sent');
-                                console.error('❌ Full debug info:', freeData.debug);
-                                if (freeData.emailError) {
-                                  console.error('❌ Email error:', freeData.emailError);
-                                } else {
-                                  console.error('❌ No email error provided, but emailSent is false');
-                                  console.error('❌ This suggests the email attempt was not made or failed silently');
-                                }
-                                // Show alert to user that email might not have been sent
-                                alert('⚠️ Your order was processed successfully, but there was an issue sending your confirmation email. Please check your spam folder or contact us at tradeaviatorbot@gmail.com if you don\'t receive it within a few minutes.');
-                              }
-                              
-                              // Clear cart and redirect to success page
-                              localStorage.removeItem('tradeAviatorCart');
-                              setDiscountCode('');
-                              setDiscountApplied(false);
-                              window.location.href = '/payment/success?session_id=FREE-' + Date.now();
+                            
+                            // Log email status
+                            if (freeData.emailSent) {
+                              console.log('✅ Customer confirmation email was sent successfully');
+                              console.log('📧 Email ID:', freeData.emailId || 'N/A');
                             } else {
-                              const errorData = await freeResponse.json().catch(() => ({}));
-                              console.error('❌ Free purchase failed:', errorData);
-                              throw new Error(errorData.error || 'Failed to process free purchase');
+                              console.error('❌ Customer confirmation email was NOT sent');
+                              console.error('❌ Full debug info:', freeData.debug);
+                              if (freeData.emailError) {
+                                console.error('❌ Email error:', freeData.emailError);
+                              } else {
+                                console.error('❌ No email error provided, but emailSent is false');
+                                console.error('❌ This suggests the email attempt was not made or failed silently');
+                              }
+                              // Show alert to user that email might not have been sent
+                              alert('⚠️ Your order was processed successfully, but there was an issue sending your confirmation email. Please check your spam folder or contact us at tradeaviatorbot@gmail.com if you don\'t receive it within a few minutes.');
                             }
-                          } catch (freeError) {
-                            console.error('Error processing free purchase:', freeError);
-                            setSubmitStatus('error');
-                            setIsSubmitting(false);
-                            alert('Error processing your order. Please try again.');
+                            
+                            // Clear cart and redirect to success page
+                            localStorage.removeItem('tradeAviatorCart');
+                            setDiscountCode('');
+                            setDiscountApplied(false);
+                            window.location.href = '/payment/success?session_id=FREE-' + Date.now();
+                          } else {
+                            const errorData = await freeResponse.json().catch(() => ({}));
+                            console.error('❌ Free purchase failed:', errorData);
+                            throw new Error(errorData.error || 'Failed to process free purchase');
                           }
-                        } else if (data.url) {
-                          // Redirect to Stripe Checkout for paid purchases
-                          window.location.href = data.url;
+                        } catch (freeError: any) {
+                          console.error('Error processing free purchase:', freeError);
+                          setSubmitStatus('error');
+                          setIsSubmitting(false);
+                          alert(`Error processing your order: ${freeError.message || 'Please try again.'}`);
+                          return;
                         }
                       } else {
-                        setSubmitStatus('error');
-                        setIsSubmitting(false);
-                        console.error('Failed to create checkout session:', data);
-                        alert(`Payment Error: ${data.error || 'Unknown error. Please check the console for details.'}`);
+                        // Handle paid purchases with Stripe
+                        const response = await fetch('/api/create-checkout-session', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            items: cartItems,
+                            customerEmail: email,
+                            customerName: name,
+                            customerPhone: phone,
+                            discountCode: discountApplied ? discountCode : null,
+                          }),
+                        });
+
+                        // Check if response is JSON
+                        const contentType = response.headers.get('content-type');
+                        if (!contentType || !contentType.includes('application/json')) {
+                          const text = await response.text();
+                          console.error('Non-JSON response received:', text.substring(0, 500));
+                          throw new Error(`API route returned HTML instead of JSON. Status: ${response.status}. The route may not be found. Please restart your dev server.`);
+                        }
+
+                        const data = await response.json();
+
+                        if (response.ok && data.url) {
+                          // Redirect to Stripe Checkout for paid purchases
+                          window.location.href = data.url;
+                        } else {
+                          setSubmitStatus('error');
+                          setIsSubmitting(false);
+                          console.error('Failed to create checkout session:', data);
+                          alert(`Payment Error: ${data.error || 'Unknown error. Please check the console for details.'}`);
+                        }
                       }
                     } catch (error: any) {
-                      console.error('Error creating checkout session:', error);
+                      console.error('Error processing payment:', error);
                       setSubmitStatus('error');
                       setIsSubmitting(false);
                       alert(`Payment Error: ${error.message || 'Failed to connect to payment server. Please try again.'}`);

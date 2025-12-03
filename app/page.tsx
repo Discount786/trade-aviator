@@ -1018,15 +1018,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="rounded-xl p-3 md:p-6"
-              style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-3 md:p-6" style={{
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
+                width: '100%',
+                borderRadius: '10px',
+              }}>
               <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
@@ -1042,6 +1043,7 @@ export default function Home() {
               <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "Such an easy set up and great returns, forever thankful to be part of this great investment!"
               </p>
+              </div>
             </motion.div>
 
             {/* Testimonial 2 */}
@@ -1050,15 +1052,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-xl p-3 md:p-6"
-              style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+              className="video-animated-border"
+            >
+              <div className="rounded-xl p-3 md:p-6" style={{
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
+                width: '100%',
+                borderRadius: '10px',
+              }}>
               <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
@@ -1074,6 +1077,7 @@ export default function Home() {
               <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "I used to trade manually all day and lost 4 challenges. Now the EA earns while I sleep. Made 10% in 5 days. Highly recommended!"
               </p>
+              </div>
             </motion.div>
 
             {/* Testimonial 3 */}
@@ -1082,15 +1086,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-xl p-3 md:p-6 col-span-2 md:col-span-1"
-              style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+              className="video-animated-border col-span-2 md:col-span-1"
+            >
+              <div className="rounded-xl p-3 md:p-6" style={{
+                background: 'rgba(15, 15, 18, 0.95)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
                 minHeight: '200px',
                 height: '100%',
-              }}
-            >
+                width: '100%',
+                borderRadius: '10px',
+              }}>
               <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                 <div 
                   className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-lg"
@@ -1106,6 +1111,7 @@ export default function Home() {
               <p className="text-xs md:text-base leading-relaxed" style={{ color: '#E5E7EB' }}>
                 "First Auto Trader i have used and its worked wonders. Every week compounding my account for greater profits!"
               </p>
+              </div>
             </motion.div>
           </div>
         </div>
