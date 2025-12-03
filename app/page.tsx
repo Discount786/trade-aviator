@@ -756,12 +756,9 @@ export default function Home() {
                 Why Trade Aviator Works
               </h2>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: '#A78BFA' }}></div>
-              <p className="text-lg md:text-xl" style={{ color: '#FFFFFF' }}>
-                Intelligent AI flow. Risk aligned with precision.
-              </p>
-            </div>
+            <p className="text-lg md:text-xl text-center" style={{ color: '#FFFFFF' }}>
+              Intelligent AI flow. Risk aligned with precision.
+            </p>
           </motion.div>
 
           {/* Cards Grid */}
